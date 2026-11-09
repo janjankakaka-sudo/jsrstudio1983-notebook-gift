@@ -3,213 +3,76 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>สมุดบันทึกงาน</title>
-<link href="https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@500;600;700&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#fff8e9">
+<meta name="description" content="สมุดบันทึกงานส่วนตัวของ อ.บอล: วางแผนงาน เช็กลิสต์ ไดอารี่ และรายงาน">
+<title>สมุดบันทึกงาน · อ.บอล</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#C9971C;--soft:#FFF1BD;--ink:#3E2C1C;--mut:#7A6650;--paper:#FFFDF7;--ln:#EADFC4;--bad:#C9453B;--good:#4E9B6B}
-*{box-sizing:border-box}
-body{margin:0;color:var(--ink);font:18px/1.65 'Sarabun','Noto Sans Thai',sans-serif;background:linear-gradient(160deg,#F7EBCB,#F2DDB0 55%,#EBCF9A) fixed}
-h1,h2,h3,.btn,.tabs button,.chip{font-family:'Mali','Sarabun',sans-serif}
-h1,h2,h3{margin:0}
-.gift{text-align:center;padding:14px 12px 22px;font:700 clamp(19px,4.2vw,30px)/1.4 'Mali';color:var(--ink);background:linear-gradient(90deg,#F6D56B,#FFE9A0,#F6D56B);text-shadow:0 1px 0 #fff;position:relative}
-.gift::after{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='14'%3E%3Cpath d='M0 14C6 14 9 9 18 0c9 9 12 14 18 14z' fill='%23FFFDF7'/%3E%3C/svg%3E") repeat-x bottom}
-.gift span{display:inline-block;animation:bob 3s ease-in-out infinite}
-.gift .hand{display:block;animation:none;margin-top:6px;font:400 clamp(18px,3.2vw,25px)/1.5 'Itim','Mali',cursive;color:#5A3B12;text-shadow:none}
-.hand .sg{display:inline-block;animation:none;margin-left:6px;color:#8B4A1E;transform:rotate(-3deg)}
-@keyframes bob{50%{transform:translateY(-3px)}}
-@media(prefers-reduced-motion:reduce){.gift span{animation:none}}
-.book{max-width:1020px;margin:18px auto 40px;display:grid;grid-template-columns:46px 1fr 112px;background:var(--paper);border-radius:10px 22px 22px 10px;box-shadow:0 12px 30px rgba(90,60,10,.28),0 0 0 3px #fff inset;min-height:70vh}
-.ring{background:radial-gradient(circle,#fff 0 5px,#9b7a1f 6px 8px,transparent 9px) 0 8px/46px 36px repeat-y;border-right:2px dashed var(--ln)}
-.page{padding:20px 24px 34px;background:repeating-linear-gradient(transparent 0 33px,rgba(201,151,28,.13) 33px 34px);min-width:0}
-.cov{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px}
-.cr{font-size:13.5px;color:var(--mut)}
-#ti{font-size:clamp(24px,4vw,32px);color:var(--ink);background:linear-gradient(transparent 62%,var(--soft) 62%);display:inline-block;padding:0 6px}
-.tabs{display:flex;flex-direction:column;gap:7px;padding-top:26px}
-.tabs button{background:var(--t);border:0;border-radius:0 14px 14px 0;padding:11px 8px 11px 12px;font-size:15px;font-weight:600;text-align:left;cursor:pointer;color:var(--ink);box-shadow:2px 2px 0 rgba(0,0,0,.08)}
-.tabs button.on{transform:translateX(7px);font-weight:700;box-shadow:3px 3px 6px rgba(0,0,0,.15)}
-button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-.hd{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
-.hd h2{font-size:24px}
-.btn{background:var(--ink);color:#FFF1BD;border:0;border-radius:999px;padding:9px 20px;font-size:16px;font-weight:600;cursor:pointer;min-height:44px}
-.btn.alt{background:var(--soft);color:var(--ink);border:2px solid var(--acc)}
-.btn.sm{padding:3px 14px;font-size:14px;min-height:36px}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}
-.chip{border:2px solid var(--c,var(--acc));background:var(--paper);border-radius:999px;padding:3px 14px;font-size:15px;cursor:pointer;color:var(--ink)}
-.chip.on{background:var(--c,var(--acc));font-weight:700}
-.cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
-.card{background:var(--paper);border:2px solid var(--ln);border-top:7px solid var(--c,var(--acc));border-radius:6px 16px 16px 16px;padding:14px 16px;position:relative;box-shadow:2px 3px 0 rgba(150,110,20,.12)}
-.card::before{content:"";position:absolute;top:-13px;right:18px;width:54px;height:18px;background:var(--c,var(--acc));opacity:.55;transform:rotate(4deg);border-radius:2px}
-.card h3{font-size:18px;margin:8px 0 4px}
-.row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
-.ct{background:color-mix(in srgb,var(--c) 25%,#fff);border-radius:999px;padding:0 10px;font-size:14px}
-.st{border-radius:999px;padding:0 10px;font-size:13.5px;font-weight:600;background:#eee}
-.s1{background:#FFE08A}.s2{background:#BFE5CB}
-.mut{color:var(--mut);font-size:14.5px}
-.late{color:var(--bad);font-weight:600}
-.demo{font:500 12px 'Sarabun';background:var(--soft);border:1px dashed var(--acc);border-radius:999px;padding:0 8px;vertical-align:middle}
-.pg{height:9px;border-radius:6px;background:var(--soft);margin:8px 0;overflow:hidden}
-.pg i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),#E9C358);border-radius:6px}
-input,select,textarea{font:inherit;font-size:16px;padding:8px 10px;border:2px solid var(--ln);border-radius:12px;background:#fff;color:var(--ink);width:100%}
-select.sl{width:auto;padding:3px 6px;font-size:14px}
-.ci{display:flex;align-items:center;gap:10px;padding:5px 0;cursor:pointer;border-bottom:1px dotted var(--ln)}
-.ci input{width:24px;height:24px;accent-color:var(--good);flex:none}
-.ci span{flex:1}
-.ci.dn span{text-decoration:line-through;color:var(--mut)}
-.x{border:0;background:none;color:var(--mut);cursor:pointer;font-size:15px;padding:4px 8px}
-.add{display:flex;gap:6px;margin:10px 0}
-.add input{padding:5px 10px}
-.hello h2{font-size:26px}
-.wish{background:var(--soft);border:2px dashed var(--acc);border-radius:16px;padding:12px 16px;margin:12px 0;font-size:17px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:12px 0}
-.stats button{background:var(--paper);border:2px solid var(--ln);border-radius:16px;padding:10px;cursor:pointer;font:15px 'Sarabun';color:var(--ink)}
-.stats b{display:block;font:700 32px 'Mali';color:var(--acc)}
-.bn{background:var(--soft);border-radius:12px;padding:8px 14px;margin-bottom:12px;display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center;font-size:15px}
-.bt{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
-.entry{white-space:pre-wrap;margin:6px 0 0}
-.mo{font-size:30px;line-height:1}
-.crow{display:flex;gap:8px;margin:6px 0}
-table{width:100%;border-collapse:collapse}
-th{background:var(--soft);text-align:left;padding:7px 10px;font-family:'Mali'}
-td{padding:6px 10px;border-top:1px solid var(--ln)}
-.bar{display:grid;grid-template-columns:110px 1fr 30px;gap:8px;align-items:center;margin:4px 0;font-size:15px}
-.sc{overflow-x:auto}
-dialog{border:3px solid var(--acc);border-radius:20px;padding:18px;max-width:520px;width:94%;background:var(--paper);color:var(--ink)}
-dialog::backdrop{background:rgba(60,40,10,.5)}
-dialog label{display:block;margin:8px 0;font-weight:500;font-size:16px}
-footer{text-align:center;color:var(--mut);font-size:13.5px;padding:0 12px 28px}
-@media(max-width:760px){.book{grid-template-columns:1fr;margin:0;border-radius:0}.ring{display:none}.tabs{order:-1;flex-direction:row;overflow-x:auto;padding:10px 10px 0}.tabs button{border-radius:14px 14px 0 0;white-space:nowrap}.tabs button.on{transform:none}.page{padding:16px 14px 30px}}
-@media print{.gift,.tabs,.btn,.chips,footer,.bn{display:none}.book{box-shadow:none;display:block}}
+:root{--ink:#463421;--muted:#806d55;--gold:#a87517;--cream:#fffaf0;--paper:#fffefa;--line:#eadfc9;--green:#477b5c;--red:#aa443a;--shadow:0 12px 34px #5b41151c}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);font:17px/1.65 'Sarabun',sans-serif;background:linear-gradient(145deg,#fff1d2,#f8e6d2 55%,#f2d8d0);min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}.top{padding:10px 16px;text-align:center;background:#f4dfaa;color:#5f421d;font:600 15px 'Mali',sans-serif}.top a{font-weight:700;text-decoration-thickness:1px;text-underline-offset:3px}.wrap{max-width:1180px;margin:26px auto 44px;padding:0 16px}.shell{display:grid;grid-template-columns:220px minmax(0,1fr);background:var(--paper);border:1px solid #fff;border-radius:26px;box-shadow:var(--shadow);overflow:hidden;min-height:76vh}.side{padding:24px 16px;background:linear-gradient(165deg,#fff8e8,#f5e8cf);border-right:1px solid var(--line)}.brand{font:700 23px/1.35 'Mali',sans-serif;margin:0 8px 4px}.brand-sub{font-size:13px;color:var(--muted);margin:0 8px 22px}.nav{display:grid;gap:7px}.nav button{border:0;border-radius:13px;padding:11px 12px;text-align:left;background:transparent;color:var(--ink);font:600 15px 'Mali',sans-serif}.nav button:hover,.nav button.active{background:#f0dfa9}.nav button.active{box-shadow:inset 3px 0 var(--gold)}.main{padding:28px clamp(16px,4vw,42px) 36px;min-width:0}.page-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}.page-head h1{font:700 clamp(25px,4vw,34px)/1.3 'Mali',sans-serif;margin:0}.sub{color:var(--muted);font-size:14px}.btn{border:0;border-radius:999px;padding:10px 18px;min-height:44px;background:#654525;color:white;font:600 15px 'Mali',sans-serif;box-shadow:0 3px 0 #442c18;transition:transform .15s,box-shadow .15s}.btn:hover{transform:translateY(-1px);box-shadow:0 5px 0 #442c18}.btn.light{background:#f5e6bd;color:#503b20;border:1px solid #dfc77f;box-shadow:none}.btn.danger{background:#a34439;box-shadow:0 3px 0 #762f28}.btn.small{padding:5px 12px;min-height:35px;font-size:13px}.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #bf8a20;outline-offset:2px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:16px}.card{background:#fffefa;border:1px solid var(--line);border-top:5px solid var(--tone,#c9971c);border-radius:8px 18px 18px;padding:17px;box-shadow:0 4px 12px #6149220b;min-width:0}.card h2,.card h3{font:600 18px 'Mali',sans-serif;margin:8px 0}.card h2{font-size:21px}.row{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}.muted{color:var(--muted);font-size:14px}.tag{display:inline-flex;align-items:center;gap:5px;padding:2px 10px;border-radius:999px;background:color-mix(in srgb,var(--tone,#c9971c) 16%,white);font-size:13px}.status{border-radius:999px;background:#f3e8cd;padding:2px 9px;font-size:13px}.status.done{background:#dceede;color:#315d3d}.status.progress{background:#ffedc4}.progress{height:8px;background:#f1e7d2;border-radius:99px;overflow:hidden;margin:10px 0}.progress i{display:block;height:100%;background:linear-gradient(90deg,#bd8b28,#edc865);border-radius:99px}.chips{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 16px}.chip{border:1px solid var(--line);border-radius:99px;background:white;padding:5px 13px;color:var(--ink);font-size:14px}.chip.active{background:#f1dfaa;border-color:#c49a45;font-weight:700}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin:18px 0}.stat{padding:13px;border:1px solid var(--line);border-radius:16px;background:#fffdf7;text-align:center}.stat b{display:block;font:700 30px 'Mali',sans-serif;color:var(--gold)}.empty{padding:25px;text-align:center;border:1px dashed #d9c8a9;border-radius:16px;color:var(--muted);grid-column:1/-1}.wish{padding:14px 18px;border:1px dashed #c99c42;background:#fff5d9;border-radius:16px;margin:15px 0}.item{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px dotted var(--line)}.item input[type=checkbox]{width:21px;height:21px;accent-color:var(--green)}.item .txt{flex:1}.item.checked .txt{text-decoration:line-through;color:var(--muted)}.icon-btn{border:0;background:transparent;color:var(--muted);padding:4px 8px;font-size:16px}.entry{white-space:pre-wrap;margin:8px 0}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.form-row{margin:10px 0}.form-row label{display:block;font-weight:600;margin-bottom:4px}.form-row input,.form-row select,.form-row textarea,.settings-input{width:100%;padding:9px 11px;border:1px solid #d9cbb5;border-radius:11px;background:white;color:var(--ink)}.form-row textarea{resize:vertical}.modal{width:min(560px,94vw);max-height:90vh;overflow:auto;border:1px solid #d2ad58;border-radius:20px;padding:22px;background:var(--cream);color:var(--ink);box-shadow:0 20px 60px #32200c55}.modal::backdrop{background:#3e2b1766}.modal h2{font:700 22px 'Mali',sans-serif;margin:0 0 12px}.modal-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:16px}.check-row{display:flex;align-items:center;gap:8px}.check-row input{width:auto}.notice{font-size:13px;color:var(--muted);min-height:22px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:480px}th,td{text-align:left;padding:9px;border-bottom:1px solid var(--line)}th{background:#fff4d8;font-family:'Mali',sans-serif}.mood{font-size:27px}.foot{text-align:center;color:#806d55;font-size:13px;padding:15px}.sharelink{display:inline-block;margin-top:10px;color:#73501f}.late{color:var(--red);font-weight:700}
+@media(max-width:760px){.wrap{padding:0;margin:0 auto 28px}.shell{display:flex;flex-direction:column;border-radius:0;min-height:90vh}.side{padding:12px 12px 8px;border-right:0;border-bottom:1px solid var(--line)}.brand{font-size:18px;margin:0 4px}.brand-sub{display:none}.nav{display:flex;overflow-x:auto;gap:5px;margin-top:8px}.nav button{white-space:nowrap;padding:9px 12px}.nav button.active{box-shadow:inset 0 -3px var(--gold)}.main{padding:20px 15px 28px}.page-head{align-items:flex-start}.card{padding:14px}.top{font-size:13px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+@media print{body{background:white}.top,.side,.no-print,.foot{display:none!important}.wrap{margin:0;padding:0}.shell{display:block;border:0;box-shadow:none}.main{padding:0}.card{break-inside:avoid}}
 </style>
 </head>
 <body>
-<div class="gift"><span>🎂 สุขสันต์วันเกิด อ.บอล จาก อดีตศิษย์ก้นกุฎิ 🎂</span><span class="hand">ขอให้อาจารย์มีสุขภาพแข็งแรง ใจสงบ และมีความสุขในทุกวัน... <span class="sg">จั่นเจา</span></span></div>
-<div class="book">
-  <div class="ring" aria-hidden="true"></div>
-  <div class="page">
-    <div class="cov"><h1 id="ti"></h1><div class="cr">พัฒนาแอปโดย JSRstudio1983<br>(ของขวัญแด่ อาจารย์บอล)</div></div>
-    <div id="v"></div>
-  </div>
-  <nav class="tabs" id="tabs" aria-label="หมวดสมุด"></nav>
-</div>
-<footer>ข้อมูลเก็บในเบราว์เซอร์ของเครื่องนี้ · สำรองได้ที่หน้า “ตั้งค่า”</footer>
-<dialog id="dlg"><form id="f"></form></dialog>
-
+<div class="top">🎂 ของขวัญวันเกิดแด่ อ.บอล · <a href="birthday.html">เปิดหน้าอวยพรพิเศษ</a></div>
+<div class="wrap"><div class="shell"><aside class="side"><h2 class="brand">📔 สมุดของ อ.บอล</h2><p class="brand-sub">วางแผนอย่างสบายใจ ทีละวัน</p><nav class="nav" id="nav" aria-label="เมนูสมุด"></nav></aside><main class="main" id="app" aria-live="polite"></main></div></div>
+<footer class="foot">ข้อมูลบันทึกไว้ในเบราว์เซอร์เครื่องนี้ · ส่งออกไฟล์สำรองได้ที่เมนูตั้งค่า</footer>
+<dialog class="modal" id="dialog"><form id="editor" method="dialog"></form></dialog>
 <script>
-const K='jsr_nb_v1',D=864e5,MOOD=['😊','😌','🤩','😐','😴','😟'],MN=['สุขใจ','สงบ','ตื่นเต้น','เฉย ๆ','เหนื่อย','กังวล'],STN=['วางแผน','กำลังทำ','เสร็จแล้ว'];
-const PAL={'ทอง':['#C9971C','#FFF1BD'],'กุหลาบ':['#D1667A','#FFE2E8'],'เขียวมินต์':['#5E9C7E','#DFF1E7'],'ฟ้าใส':['#5A8DCF','#E0EDFB']};
-const TABS=[['home','🏠','หน้าแรก','#F6C945'],['plan','🗓','แผนงาน','#F4A3A3'],['chk','✅','เช็กลิสต์','#9CCFA9'],['dia','📖','ไดอารี่','#9DB9E8'],['rep','📊','รายงาน','#C9A8E6'],['set','⚙️','ตั้งค่า','#D9D3C3']];
-const $=s=>document.querySelector(s),e=s=>String(s??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const ds=x=>{const d=new Date(x);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,0)+'-'+String(d.getDate()).padStart(2,0)};
-const fd=x=>x?new Date(x+'T00:00').toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'2-digit'}):'-';
-let S,tab='home',fc='all',rp=7;
-function seed(){
-  const t=Date.now(),d=n=>ds(t+n*D);
-  const cats=[['📋','งานประจำ','#E8B84A'],['📚','วิชาการ','#6FA3E0'],['✍️','งานเขียน','#C68CE0'],['🌿','สุขภาพ','#7BC49A'],['🏡','ครอบครัว','#F08C8C'],['🌸','งานอดิเรก','#F2A65A']].map((c,i)=>({id:i+1,i:c[0],n:c[1],c:c[2]}));
-  return{n:100,demo:1,cfg:{title:'สมุดบันทึกงาน อ.บอล',wish:'ขอให้อาจารย์มีสุขภาพแข็งแรง ใจสงบ และมีความสุขในทุกวัน',pal:'ทอง',cats},
-  plans:[{id:1,t:'เตรียมเอกสารประชุมประจำเดือน',cat:1,s:d(-2),e:d(3),st:1,pr:40,note:'',dn:0,demo:1},{id:2,t:'ร่างบทความฉบับใหม่',cat:3,s:d(-5),e:d(10),st:1,pr:25,note:'เก็บข้อมูลเพิ่มอีกนิด',dn:0,demo:1},{id:3,t:'นัดตรวจสุขภาพประจำปี',cat:4,s:d(1),e:d(14),st:0,pr:0,note:'',dn:0,demo:1}],
-  lists:[{id:4,t:'งานวันนี้',cat:1,demo:1,it:[{x:'ตอบอีเมลสำคัญ',d:t-36e5},{x:'ทบทวนตารางงานสัปดาห์นี้',d:0},{x:'โทรหาผู้ประสานงาน',d:0}]},{id:5,t:'ของที่ต้องเตรียมเดินทาง',cat:5,demo:1,it:[{x:'ยาประจำตัว',d:0},{x:'แว่นตาสำรอง',d:t-72e5},{x:'หนังสือเล่มโปรด',d:0}]}],
-  dia:[{id:6,dt:d(0),m:1,t:'เช้าที่สงบ',x:'ตื่นเช้า จิบชา อ่านหนังสือสบาย ๆ ก่อนเริ่มงาน',cat:6,demo:1},{id:7,dt:d(-1),m:0,t:'งานคืบหน้าดี',x:'ส่งเอกสารได้ตามกำหนด รู้สึกโล่งใจ',cat:1,demo:1},{id:8,dt:d(-3),m:4,t:'เหนื่อยหน่อยแต่ไหว',x:'วันนี้งานเยอะ พรุ่งนี้ขอพักให้เพียงพอ',cat:4,demo:1}]};
-}
-function load(){try{const r=localStorage.getItem(K);if(r)return JSON.parse(r)}catch(x){}return seed()}
-function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(x){}}
-const cat=id=>S.cfg.cats.find(c=>c.id==id)||{i:'📁',n:'ไม่ระบุ',c:'#cccccc'};
-const tag=id=>`<span class="ct" style="--c:${cat(id).c}">${e(cat(id).i)} ${e(cat(id).n)}</span>`;
-const chips=()=>`<div class="chips" role="group" aria-label="กรองตามหมวด"><button class="chip${fc=='all'?' on':''}" onclick="fc='all';render()">ทั้งหมด</button>${S.cfg.cats.map(c=>`<button class="chip${fc==c.id?' on':''}" style="--c:${c.c}" onclick="fc=${c.id};render()">${e(c.i)} ${e(c.n)}</button>`).join('')}</div>`;
-const catOpt=()=>S.cfg.cats.map(c=>[c.id,c.i+' '+c.n]);
-const dm=x=>x?' <span class="demo">ตัวอย่าง</span>':'';
-const go=k=>{tab=k;fc='all';render();scrollTo(0,0)};
-
-function form(title,fields,o,ok,del){
-  const f=$('#f');
-  f.innerHTML=`<h3>${title}</h3>`+fields.map(([k,l,t,op])=>`<label>${l}`+(t=='s'?`<select name="${k}">${op.map(([v,n])=>`<option value="${e(v)}"${String(o[k]??'')==String(v)?' selected':''}>${e(n)}</option>`).join('')}</select>`:t=='a'?`<textarea name="${k}" rows="4">${e(o[k])}</textarea>`:`<input name="${k}" type="${t}" value="${e(o[k])}">`)+`</label>`).join('')+`<div class="bt"><button class="btn">บันทึก</button>${del?'<button type="button" class="btn alt" id="dl">ลบ</button>':''}<button type="button" class="btn alt" id="cl">ยกเลิก</button></div>`;
-  f.onsubmit=ev=>{ev.preventDefault();if(ok(Object.fromEntries(new FormData(f)))===false)return;save();$('#dlg').close();render()};
-  $('#cl').onclick=()=>$('#dlg').close();
-  if(del)$('#dl').onclick=()=>{if(confirm('ยืนยันการลบ?')){del();save();$('#dlg').close();render()}};
-  $('#dlg').showModal();
-}
-function editPlan(id){
-  const p=S.plans.find(x=>x.id==id)||{t:'',cat:S.cfg.cats[0]?.id,s:ds(Date.now()),e:ds(Date.now()+7*D),st:0,pr:0,note:''};
-  form(id?'แก้ไขแผนงาน':'เพิ่มแผนงาน',[['t','ชื่อแผนงาน','text'],['cat','หมวดหมู่','s',catOpt()],['s','วันเริ่ม','date'],['e','วันสิ้นสุด','date'],['st','สถานะ','s',STN.map((n,i)=>[i,n])],['pr','ความคืบหน้า (%)','number'],['note','บันทึกเพิ่มเติม','a']],p,d=>{
-    if(!d.t.trim()){alert('กรุณาใส่ชื่อแผนงาน');return false}
-    if(d.s&&d.e&&d.s>d.e){alert('วันสิ้นสุดต้องไม่ก่อนวันเริ่ม');return false}
-    const n={t:d.t.trim(),cat:+d.cat,s:d.s,e:d.e,st:+d.st,pr:Math.min(100,Math.max(0,+d.pr||0)),note:d.note};
-    if(n.st==2){n.pr=100;n.dn=p.dn||Date.now()}else n.dn=0;
-    if(id)Object.assign(p,n);else S.plans.push({id:++S.n,...n});
-  },id?()=>S.plans=S.plans.filter(x=>x.id!=id):null);
-}
-function plSt(id,v){const p=S.plans.find(x=>x.id==id);p.st=+v;if(p.st==2){p.pr=100;p.dn=Date.now()}else p.dn=0;save();render()}
-function editChk(id){
-  const l=S.lists.find(x=>x.id==id)||{t:'',cat:S.cfg.cats[0]?.id};
-  form(id?'แก้ไขเช็กลิสต์':'เพิ่มเช็กลิสต์',[['t','ชื่อรายการ','text'],['cat','หมวดหมู่','s',catOpt()]],l,d=>{
-    if(!d.t.trim()){alert('กรุณาใส่ชื่อ');return false}
-    if(id){l.t=d.t.trim();l.cat=+d.cat}else S.lists.push({id:++S.n,t:d.t.trim(),cat:+d.cat,it:[]});
-  },id?()=>S.lists=S.lists.filter(x=>x.id!=id):null);
-}
-const LI=id=>S.lists.find(x=>x.id==id);
-function tg(id,j){const i=LI(id).it[j];i.d=i.d?0:Date.now();save();render()}
-function ri(id,j){LI(id).it.splice(j,1);save();render()}
-function ai(id){const v=$('#ai'+id).value.trim();if(!v)return;LI(id).it.push({x:v,d:0});save();render()}
-function editDia(id){
-  const x=S.dia.find(y=>y.id==id)||{dt:ds(Date.now()),m:0,t:'',x:'',cat:S.cfg.cats[0]?.id};
-  form(id?'แก้ไขไดอารี่':'เขียนไดอารี่',[['dt','วันที่','date'],['m','อารมณ์วันนี้','s',MOOD.map((m,i)=>[i,m+' '+MN[i]])],['cat','หมวดหมู่','s',catOpt()],['t','หัวข้อ','text'],['x','บันทึกของวันนี้','a']],x,d=>{
-    if(!d.dt){alert('กรุณาเลือกวันที่');return false}
-    const n={dt:d.dt,m:+d.m,cat:+d.cat,t:d.t.trim()||'ไม่มีหัวข้อ',x:d.x};
-    if(id)Object.assign(x,n);else S.dia.push({id:++S.n,...n});
-  },id?()=>S.dia=S.dia.filter(y=>y.id!=id):null);
-}
-
-function vHome(){
-  const t=Date.now(),act=S.plans.filter(p=>p.st==1).length,left=S.lists.reduce((a,l)=>a+l.it.filter(i=>!i.d).length,0),wk=S.dia.filter(x=>x.dt>=ds(t-6*D)).length;
-  const soon=S.plans.filter(p=>p.st<2).sort((a,b)=>a.e.localeCompare(b.e)).slice(0,5);
-  return`${S.demo?`<div class="bn"><span>ตอนนี้มี <b>ข้อมูลตัวอย่าง</b> (มีป้ายกำกับ) ไว้ให้ลองใช้</span><button class="btn sm" onclick="clr()">ลบตัวอย่าง เริ่มสมุดของจริง</button></div>`:''}
-  <div class="hello"><h2>สวัสดี อ.บอล 🌼</h2><div class="mut">${new Date().toLocaleDateString('th-TH',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</div></div>
-  <div class="wish">💌 ${e(S.cfg.wish)}</div>
-  <div class="stats"><button onclick="go('plan')"><b>${act}</b>แผนที่กำลังทำ</button><button onclick="go('chk')"><b>${left}</b>รายการที่ยังไม่ติ๊ก</button><button onclick="go('dia')"><b>${wk}</b>ไดอารี่ 7 วันล่าสุด</button></div>
-  <div class="bt"><button class="btn" onclick="editPlan()">+ แผนงาน</button><button class="btn" onclick="editChk()">+ เช็กลิสต์</button><button class="btn" onclick="editDia()">+ เขียนไดอารี่</button></div>
-  <h3>🗓 แผนที่ใกล้ถึงกำหนด</h3><div class="cards" style="margin-top:14px">${soon.map(p=>`<div class="card" style="--c:${cat(p.cat).c}"><div class="row">${tag(p.cat)}<span class="st s${p.st}">${STN[p.st]}</span></div><h3>${e(p.t)}</h3><div class="mut">ถึง <span class="${p.e<ds(t)?'late':''}">${fd(p.e)}</span> · ${p.pr}%</div></div>`).join('')||'<p class="mut">ยังไม่มีแผนงาน กด “+ แผนงาน” ได้เลย</p>'}</div>`;
-}
-function vPlan(){
-  const L=S.plans.filter(p=>fc=='all'||p.cat==fc).sort((a,b)=>(a.st==2)-(b.st==2)||(a.e||'').localeCompare(b.e||''));
-  return`<div class="hd"><h2>🗓 แผนงาน</h2><button class="btn" onclick="editPlan()">+ เพิ่มแผนงาน</button></div>${chips()}<div class="cards">${L.map(p=>`<div class="card" style="--c:${cat(p.cat).c}"><div class="row">${tag(p.cat)}<span class="st s${p.st}">${STN[p.st]}</span></div><h3>${e(p.t)}${dm(p.demo)}</h3><div class="mut">${fd(p.s)} → <span class="${p.st<2&&p.e<ds(Date.now())?'late':''}">${fd(p.e)}</span></div><div class="pg"><i style="width:${p.pr}%"></i></div>${p.note?`<div class="mut">${e(p.note)}</div>`:''}<div class="row" style="margin-top:8px"><small>${p.pr}%</small><span><select class="sl" onchange="plSt(${p.id},this.value)" aria-label="สถานะ">${STN.map((n,i)=>`<option value="${i}"${p.st==i?' selected':''}>${n}</option>`).join('')}</select> <button class="btn sm alt" onclick="editPlan(${p.id})">แก้ไข</button></span></div></div>`).join('')||'<p class="mut">ยังไม่มีแผนงานในหมวดนี้</p>'}</div>`;
-}
-function vChk(){
-  const L=S.lists.filter(l=>fc=='all'||l.cat==fc);
-  return`<div class="hd"><h2>✅ เช็กลิสต์</h2><button class="btn" onclick="editChk()">+ เพิ่มเช็กลิสต์</button></div>${chips()}<div class="cards">${L.map(l=>{const n=l.it.length,d=l.it.filter(i=>i.d).length;return`<div class="card" style="--c:${cat(l.cat).c}"><div class="row">${tag(l.cat)}<small>${d}/${n} ${n&&d==n?'🎉':''}</small></div><h3>${e(l.t)}${dm(l.demo)}</h3><div class="pg"><i style="width:${n?d/n*100:0}%"></i></div>${l.it.map((i,j)=>`<label class="ci${i.d?' dn':''}"><input type="checkbox"${i.d?' checked':''} onchange="tg(${l.id},${j})"><span>${e(i.x)}</span><button class="x" onclick="event.preventDefault();ri(${l.id},${j})" aria-label="ลบรายการ">✕</button></label>`).join('')}<div class="add"><input id="ai${l.id}" placeholder="เพิ่มรายการ..." onkeydown="if(event.key=='Enter')ai(${l.id})"><button class="btn sm" onclick="ai(${l.id})">เพิ่ม</button></div><button class="btn sm alt" onclick="editChk(${l.id})">แก้ไขชื่อ/หมวด</button></div>`}).join('')||'<p class="mut">ยังไม่มีเช็กลิสต์ในหมวดนี้</p>'}</div>`;
-}
-function vDia(){
-  const L=S.dia.filter(x=>fc=='all'||x.cat==fc).sort((a,b)=>b.dt.localeCompare(a.dt));
-  return`<div class="hd"><h2>📖 ไดอารี่</h2><button class="btn" onclick="editDia()">+ เขียนไดอารี่</button></div>${chips()}<div class="cards">${L.map(x=>`<div class="card" style="--c:${cat(x.cat).c}"><div class="row"><span class="mut">${fd(x.dt)}</span><span class="mo" title="${MN[x.m]}">${MOOD[x.m]}</span></div><h3>${e(x.t)}${dm(x.demo)}</h3><p class="entry">${e(x.x)}</p><div class="row">${tag(x.cat)}<button class="btn sm alt" onclick="editDia(${x.id})">แก้ไข</button></div></div>`).join('')||'<p class="mut">ยังไม่มีไดอารี่ เริ่มเขียนวันนี้ได้เลย</p>'}</div>`;
-}
-function rdat(){
-  const st=new Date(ds(Date.now()-(rp-1)*D)+'T00:00').getTime(),from=ds(st),dl=S.dia.filter(x=>x.dt>=from),ci=S.lists.flatMap(l=>l.it.map(i=>({l,i}))).filter(o=>o.i.d>=st),pd=S.plans.filter(p=>p.dn>=st);
-  return{from,dl,ci,pd};
-}
-function vRep(){
-  const{dl,ci,pd}=rdat(),mc=MOOD.map((m,i)=>[m+' '+MN[i],dl.filter(x=>x.m==i).length]),mx=Math.max(1,...mc.map(x=>x[1])),days=new Set(dl.map(x=>x.dt)).size;
-  return`<div class="hd"><h2>📊 ไดอารี่รีพอร์ต</h2><span class="bt" style="margin:0"><select class="sl" style="min-height:44px" onchange="rp=+this.value;render()" aria-label="ช่วงเวลา">${[[7,'7 วันล่าสุด'],[30,'30 วันล่าสุด'],[90,'90 วันล่าสุด']].map(o=>`<option value="${o[0]}"${rp==o[0]?' selected':''}>${o[1]}</option>`).join('')}</select><button class="btn alt" onclick="csvD()">ส่งออก CSV</button><button class="btn" onclick="print()">พิมพ์ / PDF</button></span></div>
-  <div class="stats"><div class="card"><b style="font:700 30px Mali;color:var(--acc)">${days}/${rp}</b>วันที่เขียนไดอารี่</div><div class="card"><b style="font:700 30px Mali;color:var(--acc)">${ci.length}</b>รายการเช็กลิสต์ที่ติ๊กแล้ว</div><div class="card"><b style="font:700 30px Mali;color:var(--acc)">${pd.length}</b>แผนงานที่เสร็จ</div></div>
-  <div class="card"><h3>อารมณ์ในช่วงนี้</h3>${mc.map(([n,v])=>`<div class="bar"><span>${n}</span><div class="pg"><i style="width:${v/mx*100}%"></i></div><b>${v}</b></div>`).join('')}</div>
-  <div class="card" style="margin-top:16px"><h3>สรุปตามหมวดหมู่</h3><div class="sc"><table><tr><th>หมวด</th><th>ไดอารี่</th><th>ติ๊กแล้ว</th><th>แผนเสร็จ</th></tr>${S.cfg.cats.map(c=>`<tr><td>${e(c.i)} ${e(c.n)}</td><td>${dl.filter(x=>x.cat==c.id).length}</td><td>${ci.filter(o=>o.l.cat==c.id).length}</td><td>${pd.filter(p=>p.cat==c.id).length}</td></tr>`).join('')}</table></div></div>
-  <div class="card" style="margin-top:16px"><h3>บันทึกในช่วงนี้</h3>${dl.sort((a,b)=>b.dt.localeCompare(a.dt)).map(x=>`<p><b>${MOOD[x.m]} ${fd(x.dt)} · ${e(x.t)}</b><br><span class="mut">${e(x.x)}</span></p>`).join('')||'<p class="mut">ยังไม่มีบันทึกในช่วงนี้</p>'}</div>`;
-}
-function csvD(){const q=x=>'"'+String(x??'').replace(/"/g,'""')+'"',r=[['วันที่','อารมณ์','หมวด','หัวข้อ','บันทึก'],...rdat().dl.map(x=>[x.dt,MN[x.m],cat(x.cat).n,x.t,x.x])],a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+r.map(x=>x.map(q).join(',')).join('\r\n')],{type:'text/csv'}));a.download='diary-report-'+ds(Date.now())+'.csv';a.click()}
-function vSet(){
-  const c=S.cfg;
-  return`<div class="hd"><h2>⚙️ ตั้งค่า</h2></div><div class="card"><h3>หน้าตาสมุด</h3><label>ชื่อสมุด<input value="${e(c.title)}" onchange="S.cfg.title=this.value;save();render()"></label><label>ข้อความอวยพรหน้าแรก<textarea rows="2" onchange="S.cfg.wish=this.value;save();render()">${e(c.wish)}</textarea></label><label>สีสมุด<select onchange="S.cfg.pal=this.value;save();render()">${Object.keys(PAL).map(p=>`<option${c.pal==p?' selected':''}>${p}</option>`).join('')}</select></label></div>
-  <div class="card" style="margin-top:16px"><h3>หมวดหมู่ (ไอคอน · ชื่อ · สี)</h3>${c.cats.map((k,i)=>`<div class="crow"><input value="${e(k.i)}" maxlength="2" style="width:62px" onchange="S.cfg.cats[${i}].i=this.value;save()" aria-label="ไอคอน"><input value="${e(k.n)}" onchange="S.cfg.cats[${i}].n=this.value;save()" aria-label="ชื่อหมวด"><input type="color" value="${k.c}" style="width:60px;padding:2px" onchange="S.cfg.cats[${i}].c=this.value;save()" aria-label="สี"><button class="btn sm alt" onclick="dc(${i})">ลบ</button></div>`).join('')}<div class="bt"><button class="btn" onclick="S.cfg.cats.push({id:++S.n,i:'📁',n:'หมวดใหม่',c:'#E8B84A'});save();render()">+ เพิ่มหมวด</button><button class="btn alt" onclick="render()">อัปเดตหน้าจอ</button></div></div>
-  <div class="card" style="margin-top:16px"><h3>สำรองข้อมูล</h3><div class="bt"><button class="btn alt" onclick="exp()">สำรองข้อมูล (JSON)</button><label class="btn alt" style="margin:0;cursor:pointer">กู้คืนข้อมูล<input type="file" accept=".json" hidden onchange="imp(this)"></label><button class="btn alt" onclick="if(confirm('ล้างทุกอย่างและกลับไปข้อมูลตัวอย่าง?')){S=seed();save();render()}">รีเซ็ต</button></div></div>`;
-}
-function dc(i){if(confirm('ลบหมวดนี้? (งานในหมวดจะแสดงเป็น “ไม่ระบุ”)')){S.cfg.cats.splice(i,1);save();render()}}
-function clr(){if(confirm('ลบข้อมูลตัวอย่างทั้งหมด? สิ่งที่คุณเพิ่มเองจะอยู่ต่อ')){S.plans=S.plans.filter(x=>!x.demo);S.lists=S.lists.filter(x=>!x.demo);S.dia=S.dia.filter(x=>!x.demo);S.demo=0;save();render()}}
-function exp(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(S)],{type:'application/json'}));a.download='notebook-backup-'+ds(Date.now())+'.json';a.click()}
-function imp(i){const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d.plans||!d.lists||!d.dia||!d.cfg)throw 0;S=d;save();render()}catch(x){alert('ไฟล์ไม่ถูกต้อง')}};r.readAsText(i.files[0])}
-function render(){
-  const[a,s]=PAL[S.cfg.pal]||PAL['ทอง'],r=document.documentElement;r.style.setProperty('--acc',a);r.style.setProperty('--soft',s);
-  $('#ti').textContent=S.cfg.title;document.title=S.cfg.title;
-  $('#tabs').innerHTML=TABS.map(([k,i,n,c])=>`<button class="${tab==k?'on':''}" style="--t:${c}" onclick="go('${k}')">${i} ${n}</button>`).join('');
-  $('#v').innerHTML={home:vHome,plan:vPlan,chk:vChk,dia:vDia,rep:vRep,set:vSet}[tab]();
-}
-S=load();render();
+'use strict';
+const KEY='jsr_nb_v2';
+const MOODS=[['😊','สุขใจ'],['😌','สงบ'],['🤩','ตื่นเต้น'],['😐','เฉย ๆ'],['😴','เหนื่อย'],['😟','กังวล']];
+const STATUSES=['วางแผน','กำลังทำ','เสร็จแล้ว'];
+const MENU=[['home','🏡','หน้าแรก'],['plans','🗓️','แผนงาน'],['lists','✅','เช็กลิสต์'],['diary','📖','ไดอารี่'],['report','📊','รายงาน'],['settings','⚙️','ตั้งค่า']];
+const DEFAULT_CATS=[{id:1,i:'📋',n:'งานประจำ',c:'#e8b84a'},{id:2,i:'📚',n:'วิชาการ',c:'#6fa3e0'},{id:3,i:'✍️',n:'งานเขียน',c:'#c68ce0'},{id:4,i:'🌿',n:'สุขภาพ',c:'#7bc49a'},{id:5,i:'🏡',n:'ครอบครัว',c:'#f08c8c'},{id:6,i:'🌸',n:'งานอดิเรก',c:'#f2a65a'}];
+const $=s=>document.querySelector(s), esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+const dateFmt=x=>{if(!x)return 'ไม่ระบุวันที่';const d=new Date(x+'T00:00:00');return Number.isNaN(+d)?'ไม่ระบุวันที่':d.toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'})};
+const validColor=x=>/^#[0-9a-f]{6}$/i.test(x||'')?x:'#c9971c';
+function initial(){let id=10;return{nextId:id,config:{title:'สมุดบันทึกงาน อ.บอล',wish:'ขอให้อาจารย์มีสุขภาพแข็งแรง ใจสงบ และมีความสุขในทุกวัน',cats:DEFAULT_CATS},plans:[],lists:[],diary:[]}}
+function normalize(raw){const base=initial();if(!raw||typeof raw!=='object')return base;const cfg=raw.config||raw.cfg||{};base.config.title=String(cfg.title||base.config.title).slice(0,100);base.config.wish=String(cfg.wish||base.config.wish).slice(0,1000);if(Array.isArray(cfg.cats)&&cfg.cats.length){base.config.cats=cfg.cats.slice(0,30).map((c,i)=>({id:Number(c.id)||i+1,i:String(c.i||'📁').slice(0,4),n:String(c.n||'หมวด').slice(0,50),c:validColor(c.c)}))}
+const catId=x=>Number(x)||base.config.cats[0]?.id||1;
+base.plans=Array.isArray(raw.plans)?raw.plans.map(p=>({id:Number(p.id)||++base.nextId,t:String(p.t||'').slice(0,200),cat:catId(p.cat),s:String(p.s||''),e:String(p.e||''),st:Math.min(2,Math.max(0,Number(p.st)||0)),pr:Math.min(100,Math.max(0,Number(p.pr)||0)),note:String(p.note||'').slice(0,2000),dn:Number(p.dn)||0})):[];
+base.lists=Array.isArray(raw.lists)?raw.lists.map(l=>({id:Number(l.id)||++base.nextId,t:String(l.t||'').slice(0,200),cat:catId(l.cat),it:Array.isArray(l.it)?l.it.map(i=>({x:String(i.x||'').slice(0,300),d:Number(i.d)||0})):[]})):[];
+base.diary=Array.isArray(raw.diary||raw.dia)?(raw.diary||raw.dia).map(x=>({id:Number(x.id)||++base.nextId,dt:String(x.dt||today()),m:Math.min(5,Math.max(0,Number(x.m)||0)),cat:catId(x.cat),t:String(x.t||'ไม่มีหัวข้อ').slice(0,200),x:String(x.x||'').slice(0,5000)})):[];
+base.nextId=Math.max(Number(raw.nextId||raw.n)||base.nextId,...base.plans.map(x=>x.id),...base.lists.map(x=>x.id),...base.diary.map(x=>x.id),10);return base}
+function demoData(){const s=initial(),d=new Date();const shift=n=>{const x=new Date(d);x.setDate(x.getDate()+n);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`};s.plans=[{id:1,t:'เตรียมเอกสารประชุมประจำเดือน',cat:1,s:shift(-1),e:shift(4),st:1,pr:40,note:'รวบรวมเอกสารที่เกี่ยวข้อง',dn:0},{id:2,t:'ร่างบทความฉบับใหม่',cat:3,s:shift(-3),e:shift(10),st:0,pr:15,note:'',dn:0}];s.lists=[{id:3,t:'งานวันนี้',cat:1,it:[{x:'ตอบอีเมลสำคัญ',d:0},{x:'ทบทวนตารางงานสัปดาห์นี้',d:0}]}];s.diary=[{id:4,dt:shift(0),m:1,cat:6,t:'เช้าที่สงบ',x:'เริ่มวันด้วยชาอุ่น ๆ และวางแผนงานอย่างสบายใจ'}];s.nextId=10;s.demo=true;return s}
+function load(){try{const raw=localStorage.getItem(KEY);if(raw)return normalize(JSON.parse(raw));const old=localStorage.getItem('jsr_nb_v1');if(old){const migrated=normalize(JSON.parse(old));return migrated}}catch(err){}return demoData()}
+let state=load(),page='home',filter='all',range=7,notice='';
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(state));notice='บันทึกเรียบร้อยแล้ว'}catch(err){notice='บันทึกในเครื่องไม่สำเร็จ กรุณาส่งออกไฟล์สำรอง'}render()}
+function cat(id){return state.config.cats.find(c=>c.id==id)||{i:'📁',n:'ไม่ระบุ',c:'#cccccc'}}
+function catTag(id){const c=cat(id);return `<span class="tag" style="--tone:${validColor(c.c)}">${esc(c.i)} ${esc(c.n)}</span>`}
+function catOptions(selected){return state.config.cats.map(c=>`<option value="${c.id}" ${c.id==selected?'selected':''}>${esc(c.i)} ${esc(c.n)}</option>`).join('')}
+function empty(text){return `<div class="empty">${esc(text)}</div>`}
+function heading(title,button=''){return `<div class="page-head"><div><h1>${title}</h1><div class="sub">${new Date().toLocaleDateString('th-TH',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</div></div>${button}</div>`}
+function addButton(label,action){return `<button class="btn no-print" data-action="${action}">＋ ${label}</button>`}
+function home(){const active=state.plans.filter(p=>p.st===1).length,pending=state.lists.reduce((n,l)=>n+l.it.filter(i=>!i.d).length,0),week=state.diary.filter(x=>x.dt>=daysAgo(6)).length,soon=state.plans.filter(p=>p.st<2).sort((a,b)=>(a.e||'').localeCompare(b.e||'')).slice(0,4);return `${heading('สวัสดี อ.บอล 🌼')}<div class="wish">💌 ${esc(state.config.wish)}</div><div class="stats"><div class="stat"><b>${active}</b>แผนที่กำลังทำ</div><div class="stat"><b>${pending}</b>รายการที่ยังไม่ติ๊ก</div><div class="stat"><b>${week}</b>บันทึกใน 7 วันล่าสุด</div></div><div class="toolbar no-print">${addButton('แผนงาน','new-plan')}${addButton('เช็กลิสต์','new-list')}${addButton('เขียนไดอารี่','new-diary')}<a class="btn light" href="birthday.html">🎂 หน้าอวยพร</a></div><h2 style="font:600 20px Mali;margin:18px 0 10px">🗓️ แผนงานที่ใกล้ถึงกำหนด</h2><div class="grid">${soon.length?soon.map(planCard).join(''):empty('ยังไม่มีแผนงานที่กำลังดำเนินการ')}</div>`}
+function planCard(p){const status=p.st===2?'done':p.st===1?'progress':'';return `<article class="card" style="--tone:${validColor(cat(p.cat).c)}"><div class="row">${catTag(p.cat)}<span class="status ${status}">${STATUSES[p.st]}</span></div><h3>${esc(p.t)}</h3><div class="muted">${dateFmt(p.s)} → <span class="${p.st<2&&p.e&&p.e<today()?'late':''}">${dateFmt(p.e)}</span></div><div class="progress"><i style="width:${p.pr}%"></i></div><div class="row"><span class="muted">ความคืบหน้า ${p.pr}%</span><button class="btn light small" data-action="edit-plan" data-id="${p.id}">แก้ไข</button></div>${p.note?`<p class="muted">${esc(p.note)}</p>`:''}</article>`}
+function filterChips(){return `<div class="chips no-print"><button class="chip ${filter==='all'?'active':''}" data-action="filter" data-id="all">ทั้งหมด</button>${state.config.cats.map(c=>`<button class="chip ${filter==c.id?'active':''}" data-action="filter" data-id="${c.id}">${esc(c.i)} ${esc(c.n)}</button>`).join('')}</div>`}
+function plansPage(){const list=state.plans.filter(p=>filter==='all'||p.cat==filter).sort((a,b)=>(a.st===2)-(b.st===2)||(a.e||'').localeCompare(b.e||''));return `${heading('🗓️ แผนงาน',addButton('เพิ่มแผนงาน','new-plan'))}${filterChips()}<div class="grid">${list.length?list.map(planCard).join(''):empty('ยังไม่มีแผนงานในหมวดนี้')}</div>`}
+function listsPage(){const list=state.lists.filter(l=>filter==='all'||l.cat==filter);return `${heading('✅ เช็กลิสต์',addButton('เพิ่มเช็กลิสต์','new-list'))}${filterChips()}<div class="grid">${list.length?list.map(l=>{const done=l.it.filter(i=>i.d).length;return `<article class="card" style="--tone:${validColor(cat(l.cat).c)}"><div class="row">${catTag(l.cat)}<span class="muted">${done}/${l.it.length} เสร็จ</span></div><h3>${esc(l.t)}</h3><div class="progress"><i style="width:${l.it.length?done/l.it.length*100:0}%"></i></div>${l.it.map((i,j)=>`<label class="item ${i.d?'checked':''}"><input type="checkbox" data-action="toggle-item" data-list="${l.id}" data-index="${j}" ${i.d?'checked':''}><span class="txt">${esc(i.x)}</span><button class="icon-btn no-print" type="button" data-action="remove-item" data-list="${l.id}" data-index="${j}" aria-label="ลบรายการ">✕</button></label>`).join('')}<form class="add-item no-print" data-list="${l.id}" style="display:flex;gap:7px;margin:12px 0"><input name="item" aria-label="รายการใหม่" placeholder="เพิ่มรายการ…" required maxlength="300" style="min-width:0;flex:1;padding:8px;border:1px solid var(--line);border-radius:10px"><button class="btn small">เพิ่ม</button></form><div class="row no-print"><button class="btn light small" data-action="edit-list" data-id="${l.id}">แก้ไขชื่อ</button><button class="btn light small" data-action="delete-list" data-id="${l.id}">ลบเช็กลิสต์</button></div></article>`}).join(''):empty('ยังไม่มีเช็กลิสต์ในหมวดนี้')}</div>`}
+function diaryPage(){const list=state.diary.filter(x=>filter==='all'||x.cat==filter).sort((a,b)=>b.dt.localeCompare(a.dt));return `${heading('📖 ไดอารี่',addButton('เขียนไดอารี่','new-diary'))}${filterChips()}<div class="grid">${list.length?list.map(x=>`<article class="card" style="--tone:${validColor(cat(x.cat).c)}"><div class="row"><span class="muted">${dateFmt(x.dt)}</span><span class="mood" title="${MOODS[x.m][1]}">${MOODS[x.m][0]}</span></div><h3>${esc(x.t)}</h3><p class="entry">${esc(x.x)}</p><div class="row">${catTag(x.cat)}<span class="no-print"><button class="btn light small" data-action="edit-diary" data-id="${x.id}">แก้ไข</button> <button class="btn light small" data-action="delete-diary" data-id="${x.id}">ลบ</button></span></div></article>`).join(''):empty('ยังไม่มีบันทึก เริ่มเขียนเรื่องราวของวันนี้ได้เลย')}</div>`}
+function daysAgo(n){const d=new Date();d.setDate(d.getDate()-n);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function reportPage(){const from=daysAgo(range-1),diary=state.diary.filter(x=>x.dt>=from),donePlans=state.plans.filter(p=>p.dn&&p.dn>=new Date(from+'T00:00').getTime()),checked=state.lists.flatMap(l=>l.it.map(i=>i.d)).filter(t=>t&&t>=new Date(from+'T00:00').getTime()).length,moodCounts=MOODS.map((m,i)=>[m,diary.filter(x=>x.m===i).length]),days=new Set(diary.map(x=>x.dt)).size;return `${heading('📊 รายงาน')}<div class="row no-print" style="justify-content:flex-end;margin-bottom:14px"><label class="muted">ช่วงเวลา <select id="range" style="width:auto;padding:7px;border:1px solid var(--line);border-radius:9px">${[7,30,90].map(n=>`<option value="${n}" ${n===range?'selected':''}>${n} วัน</option>`).join('')}</select></label><button class="btn light" data-action="csv">ส่งออก CSV</button><button class="btn" data-action="print">พิมพ์ / PDF</button></div><div class="stats"><div class="stat"><b>${days}/${range}</b>วันที่เขียนไดอารี่</div><div class="stat"><b>${checked}</b>รายการที่ติ๊กแล้ว</div><div class="stat"><b>${donePlans.length}</b>แผนงานที่เสร็จ</div></div><article class="card"><h2>อารมณ์ในช่วงนี้</h2>${moodCounts.map(([m,n])=>`<div class="row" style="margin:7px 0"><span>${m[0]} ${m[1]}</span><div class="progress" style="flex:1;margin:0 10px"><i style="width:${diary.length?n/diary.length*100:0}%"></i></div><b>${n}</b></div>`).join('')}</article><article class="card" style="margin-top:16px"><h2>สรุปตามหมวดหมู่</h2><div class="table-wrap"><table><thead><tr><th>หมวด</th><th>ไดอารี่</th><th>แผนที่เสร็จ</th></tr></thead><tbody>${state.config.cats.map(c=>`<tr><td>${esc(c.i)} ${esc(c.n)}</td><td>${diary.filter(x=>x.cat===c.id).length}</td><td>${donePlans.filter(p=>p.cat===c.id).length}</td></tr>`).join('')}</tbody></table></div></article><article class="card" style="margin-top:16px"><h2>บันทึกในช่วงนี้</h2>${diary.length?diary.slice().sort((a,b)=>b.dt.localeCompare(a.dt)).map(x=>`<p><b>${MOODS[x.m][0]} ${dateFmt(x.dt)} · ${esc(x.t)}</b><br><span class="muted">${esc(x.x)}</span></p>`).join(''): '<p class="muted">ยังไม่มีบันทึกในช่วงนี้</p>'}</article>`}
+function settingsPage(){return `${heading('⚙️ ตั้งค่า')}<div class="grid"><article class="card"><h2>หน้าตาสมุด</h2><form id="settings-form"><div class="form-row"><label for="book-title">ชื่อสมุด</label><input id="book-title" name="title" maxlength="100" value="${esc(state.config.title)}" required></div><div class="form-row"><label for="book-wish">ข้อความอวยพรหน้าแรก</label><textarea id="book-wish" name="wish" rows="3" maxlength="1000">${esc(state.config.wish)}</textarea></div><button class="btn">บันทึกการตั้งค่า</button></form></article><article class="card"><h2>สำรองและกู้คืน</h2><p class="muted">สำรองเป็นไฟล์ JSON เพื่อย้ายข้อมูลหรือเก็บไว้ในที่ปลอดภัย ข้อมูลจะอยู่ในเบราว์เซอร์นี้ ไม่ได้ซิงก์ข้ามเครื่อง</p><div class="toolbar"><button class="btn light" data-action="export">ดาวน์โหลดข้อมูลสำรอง</button><label class="btn light" for="import-file">เลือกไฟล์กู้คืน</label><input id="import-file" type="file" accept="application/json,.json" hidden><button class="btn danger" data-action="reset">ล้างข้อมูลและเริ่มใหม่</button></div></article><article class="card"><h2>หมวดหมู่</h2><div>${state.config.cats.map((c,i)=>`<div class="row" style="padding:8px 0;border-bottom:1px solid var(--line)"><span>${esc(c.i)} ${esc(c.n)}</span><span><input type="color" aria-label="สี ${esc(c.n)}" data-cat-color="${i}" value="${validColor(c.c)}" style="width:42px;height:34px;padding:2px;border:0;background:transparent"><button class="icon-btn" data-action="delete-cat" data-index="${i}" aria-label="ลบหมวด">ลบ</button></span></div>`).join('')}</div><button class="btn light" style="margin-top:12px" data-action="add-cat">＋ เพิ่มหมวด</button></article></div><p class="notice" role="status">${esc(notice)}</p>`}
+function render(){const nav=$('#nav');nav.innerHTML=MENU.map(([key,icon,label])=>`<button class="${page===key?'active':''}" data-page="${key}" ${page===key?'aria-current="page"':''}>${icon} ${label}</button>`).join('');const views={home,plans:plansPage,lists:listsPage,diary:diaryPage,report:reportPage,settings:settingsPage};$('#app').innerHTML=views[page]();document.title=state.config.title||'สมุดบันทึกงาน';}
+function openEditor(title,body,saveFn,removeFn){const dialog=$('#dialog'),form=$('#editor');form.innerHTML=`<h2>${title}</h2>${body}<div class="modal-actions"><button class="btn">บันทึก</button>${removeFn?'<button class="btn danger" type="button" data-action="modal-delete">ลบ</button>':''}<button class="btn light" type="button" data-action="modal-close">ยกเลิก</button></div>`;form.onsubmit=ev=>{ev.preventDefault();if(saveFn(new FormData(form))===false)return;dialog.close();persist()};form.querySelector('[data-action="modal-close"]').onclick=()=>dialog.close();const del=form.querySelector('[data-action="modal-delete"]');if(del)del.onclick=()=>{if(confirm('ยืนยันการลบ?')){removeFn();dialog.close();persist()}};dialog.showModal()}
+function field(label,name,type,value='',opts=''){return `<div class="form-row"><label for="f-${name}">${label}</label>${type==='select'?`<select id="f-${name}" name="${name}">${opts}</select>`:type==='textarea'?`<textarea id="f-${name}" name="${name}" rows="4">${esc(value)}</textarea>`:`<input id="f-${name}" name="${name}" type="${type}" value="${esc(value)}" ${type==='number'?'min="0" max="100"':''}>`}</div>`}
+function editPlan(id){const old=state.plans.find(p=>p.id===Number(id)),p=old||{t:'',cat:state.config.cats[0]?.id||1,s:today(),e:today(),st:0,pr:0,note:''};openEditor(old?'แก้ไขแผนงาน':'เพิ่มแผนงาน',field('ชื่อแผนงาน','t','text',p.t)+field('หมวดหมู่','cat','select',p.cat,catOptions(p.cat))+field('วันเริ่ม','s','date',p.s)+field('วันสิ้นสุด','e','date',p.e)+field('สถานะ','st','select',p.st,STATUSES.map((x,i)=>`<option value="${i}" ${p.st===i?'selected':''}>${x}</option>`).join(''))+field('ความคืบหน้า (%)','pr','number',p.pr)+field('บันทึกเพิ่มเติม','note','textarea',p.note),fd=>{const d=Object.fromEntries(fd);if(!d.t.trim()){alert('กรุณากรอกชื่อแผนงาน');return false}if(d.s&&d.e&&d.e<d.s){alert('วันสิ้นสุดต้องไม่ก่อนวันเริ่ม');return false}const st=Number(d.st),item={id:old?.id||++state.nextId,t:d.t.trim(),cat:Number(d.cat),s:d.s,e:d.e,st,pr:st===2?100:Math.min(100,Number(d.pr)||0),note:d.note,dn:st===2?(old?.dn||Date.now()):0};if(old)Object.assign(old,item);else state.plans.push(item)},old?()=>state.plans=state.plans.filter(x=>x.id!==old.id):null)}
+function editList(id){const old=state.lists.find(l=>l.id===Number(id)),l=old||{t:'',cat:state.config.cats[0]?.id||1};openEditor(old?'แก้ไขเช็กลิสต์':'เพิ่มเช็กลิสต์',field('ชื่อเช็กลิสต์','t','text',l.t)+field('หมวดหมู่','cat','select',l.cat,catOptions(l.cat)),fd=>{const d=Object.fromEntries(fd);if(!d.t.trim()){alert('กรุณากรอกชื่อเช็กลิสต์');return false}if(old){old.t=d.t.trim();old.cat=Number(d.cat)}else state.lists.push({id:++state.nextId,t:d.t.trim(),cat:Number(d.cat),it:[]})},old?()=>state.lists=state.lists.filter(x=>x.id!==old.id):null)}
+function editDiary(id){const old=state.diary.find(x=>x.id===Number(id)),x=old||{dt:today(),m:0,cat:state.config.cats[0]?.id||1,t:'',x:''};const moodOptions=MOODS.map(([icon,name],i)=>`<option value="${i}" ${x.m===i?'selected':''}>${icon} ${name}</option>`).join('');openEditor(old?'แก้ไขไดอารี่':'เขียนไดอารี่',field('วันที่','dt','date',x.dt)+field('อารมณ์วันนี้','m','select',x.m,moodOptions)+field('หมวดหมู่','cat','select',x.cat,catOptions(x.cat))+field('หัวข้อ','t','text',x.t)+field('บันทึกของวันนี้','x','textarea',x.x),fd=>{const d=Object.fromEntries(fd);if(!d.dt){alert('กรุณาเลือกวันที่');return false}const item={id:old?.id||++state.nextId,dt:d.dt,m:Number(d.m),cat:Number(d.cat),t:d.t.trim()||'ไม่มีหัวข้อ',x:d.x};if(old)Object.assign(old,item);else state.diary.push(item)},old?()=>state.diary=state.diary.filter(y=>y.id!==old.id):null)}
+function exportData(){const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`notebook-backup-${today()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function importData(file){if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const raw=JSON.parse(reader.result);if(!raw.plans||!raw.lists||!(raw.diary||raw.dia)||!(raw.config||raw.cfg))throw Error();if(!confirm('กู้คืนไฟล์นี้แทนข้อมูลปัจจุบันหรือไม่? แนะนำให้ดาวน์โหลดสำรองข้อมูลปัจจุบันก่อน'))return;state=normalize(raw);persist()}catch(err){alert('ไฟล์สำรองไม่ถูกต้องหรืออ่านไม่ได้')}};reader.readAsText(file)}
+function downloadCsv(){const rows=[['วันที่','อารมณ์','หมวดหมู่','หัวข้อ','บันทึก'],...state.diary.map(x=>[x.dt,MOODS[x.m][1],cat(x.cat).n,x.t,x.x])],quote=x=>'"'+String(x??'').replace(/"/g,'""')+'"',blob=new Blob(['\ufeff'+rows.map(r=>r.map(quote).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`diary-${today()}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+$('#nav').addEventListener('click',ev=>{const b=ev.target.closest('[data-page]');if(!b)return;page=b.dataset.page;filter='all';render()});
+$('#app').addEventListener('click',ev=>{const b=ev.target.closest('[data-action]');if(!b)return;const {action,id}=b.dataset;switch(action){case'new-plan':editPlan();break;case'edit-plan':editPlan(id);break;case'new-list':editList();break;case'edit-list':editList(id);break;case'delete-list':if(confirm('ลบเช็กลิสต์นี้และรายการย่อยทั้งหมด?')){state.lists=state.lists.filter(x=>x.id!==Number(id));persist()}break;case'new-diary':editDiary();break;case'edit-diary':editDiary(id);break;case'delete-diary':if(confirm('ลบบันทึกนี้หรือไม่?')){state.diary=state.diary.filter(x=>x.id!==Number(id));persist()}break;case'filter':filter=id==='all'?'all':Number(id);render();break;case'remove-item':{const l=state.lists.find(x=>x.id===Number(b.dataset.list));if(l){l.it.splice(Number(b.dataset.index),1);persist()}break}case'export':exportData();break;case'reset':if(confirm('ลบข้อมูลในสมุดนี้และเริ่มสมุดว่างหรือไม่? แนะนำให้สำรองข้อมูลก่อน')){state=initial();persist()}break;case'add-cat':if(state.config.cats.length>=30){alert('เพิ่มได้สูงสุด 30 หมวด');break}state.config.cats.push({id:++state.nextId,i:'📁',n:'หมวดใหม่',c:'#c9971c'});persist();break;case'delete-cat':if(state.config.cats.length<=1){alert('ต้องมีอย่างน้อย 1 หมวด');break}if(confirm('ลบหมวดนี้หรือไม่? รายการเดิมจะยังอยู่และแสดงเป็นไม่ระบุ')){state.config.cats.splice(Number(b.dataset.index),1);persist()}break;case'csv':downloadCsv();break;case'print':window.print();break;case'modal-close':$('#dialog').close();break}});
+$('#app').addEventListener('change',ev=>{const t=ev.target;if(t.matches('[data-action="toggle-item"]')){const l=state.lists.find(x=>x.id===Number(t.dataset.list)),i=l?.it[Number(t.dataset.index)];if(i){i.d=t.checked?Date.now():0;persist()}}if(t.id==='range'){range=Number(t.value);render()}if(t.id==='import-file'){importData(t.files[0]);t.value=''}if(t.matches('[data-cat-color]')){state.config.cats[Number(t.dataset.catColor)].c=validColor(t.value);persist()}});
+$('#app').addEventListener('submit',ev=>{if(ev.target.matches('.add-item')){ev.preventDefault();const l=state.lists.find(x=>x.id===Number(ev.target.dataset.list)),input=ev.target.elements.item;if(l&&input.value.trim()){l.it.push({x:input.value.trim(),d:0});persist()}}if(ev.target.id==='settings-form'){ev.preventDefault();const fd=new FormData(ev.target);state.config.title=String(fd.get('title')||'').trim()||'สมุดบันทึกงาน';state.config.wish=String(fd.get('wish')||'').trim();persist()}});
+$('#dialog').addEventListener('click',ev=>{if(ev.target===ev.currentTarget)ev.currentTarget.close()});
+render();
 </script>
 </body>
 </html>
